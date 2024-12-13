@@ -1,5 +1,5 @@
 ---
-title: "RShiny for Weather"
+title: "RShiny practice"
 author: "Eeva Hökkä"
 date: "2024-12-13"
 output: html_document
@@ -11,6 +11,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Directions here: https://www.freecodecamp.org/news/build-interactive-data-driven-web-apps-with-r-shiny/
 
+
+## 1. My first webapp.
+
 ```{r}
 # Load R packages
 library(shiny)
@@ -18,7 +21,7 @@ library(shinythemes)
 
 ```
 
-
+App.
 ```{r}
 ####################################
 # Data Professor                   #
@@ -35,14 +38,14 @@ library(shinythemes)
 
 
 # 3 parts: UI, Server, ShinyApp
-
+# text1 & text2 are sent from UI to server, and server sends out txtout and displays it
 
   # Define UI
   ui <- fluidPage(theme = shinytheme("united"),  # google shinythemes to find others
     navbarPage(
       # theme = "cerulean",  # <--- To use a theme, uncomment this
-      "My first app",                  # Name of the app, on top left corner
-      tabPanel("Navbar 1",             # First page/tab
+      "My first app!",                  # Name of the app, on top left corner
+      tabPanel("1st page",             # First page/tab
                sidebarPanel(           # Left sidebar for input
                  tags$h3("Input:"),    # h3: Header 3
                  textInput("txt1", "Given Name:", ""),   # txt1 --> sent to the server
@@ -50,16 +53,16 @@ library(shinythemes)
                  
                ),
                mainPanel(              # Main text area
-                            h1("Header 1"),
+                            h1("Here's the name:"),
                             
-                            h4("Output 1"),
+                            h4("Is this correct?"),
                             verbatimTextOutput("txtout"),  # txtout --> generated FROM the server
 
                )
                
       ), # Navbar 1, tabPanel
-      tabPanel("Navbar 2", "This panel is intentionally left blank"),   # Second page/tab etc
-      tabPanel("Navbar 3", "This panel is intentionally left blank")
+      tabPanel("2nd page", "To be continued"),   # Second page/tab etc
+      tabPanel("3rd page", "To be filled in")
   
     ) # navbarPage
   ) # fluidPage
