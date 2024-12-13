@@ -21,7 +21,9 @@ library(shinythemes)
 
 ```
 
-App.
+A simple web app where user can fill in first and last name which will be displayed.
+Could be used to e.g. input datasets which the app will then analyze accordingly and display.
+
 ```{r}
 ####################################
 # Data Professor                   #
