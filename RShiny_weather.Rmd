@@ -1,0 +1,13 @@
+---
+title: "RShiny for Weather"
+author: "Eeva Hökkä"
+date: "2024-12-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Directions here: https://www.freecodecamp.org/news/how-to-build-a-weather-app-with-r-shiny/
+
