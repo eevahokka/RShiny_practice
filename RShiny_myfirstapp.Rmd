@@ -1,0 +1,82 @@
+---
+title: "RShiny for Weather"
+author: "Eeva Hökkä"
+date: "2024-12-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Directions here: https://www.freecodecamp.org/news/build-interactive-data-driven-web-apps-with-r-shiny/
+
+```{r}
+# Load R packages
+library(shiny)
+library(shinythemes)
+
+```
+
+
+```{r}
+####################################
+# Data Professor                   #
+# http://youtube.com/dataprofessor #
+# http://github.com/dataprofessor  #
+####################################
+
+# Modified from Winston Chang, 
+# https://shiny.rstudio.com/gallery/shiny-theme-selector.html
+
+# Concepts about Reactive programming used by Shiny, 
+# https://shiny.rstudio.com/articles/reactivity-overview.html
+
+
+
+# 3 parts: UI, Server, ShinyApp
+
+
+  # Define UI
+  ui <- fluidPage(theme = shinytheme("united"),  # google shinythemes to find others
+    navbarPage(
+      # theme = "cerulean",  # <--- To use a theme, uncomment this
+      "My first app",                  # Name of the app, on top left corner
+      tabPanel("Navbar 1",             # First page/tab
+               sidebarPanel(           # Left sidebar for input
+                 tags$h3("Input:"),    # h3: Header 3
+                 textInput("txt1", "Given Name:", ""),   # txt1 --> sent to the server
+                 textInput("txt2", "Surname:", ""),      # txt2 --> sent to the server
+                 
+               ),
+               mainPanel(              # Main text area
+                            h1("Header 1"),
+                            
+                            h4("Output 1"),
+                            verbatimTextOutput("txtout"),  # txtout --> generated FROM the server
+
+               )
+               
+      ), # Navbar 1, tabPanel
+      tabPanel("Navbar 2", "This panel is intentionally left blank"),   # Second page/tab etc
+      tabPanel("Navbar 3", "This panel is intentionally left blank")
+  
+    ) # navbarPage
+  ) # fluidPage
+
+  
+  # How do 
+  
+  # Define server function  
+  server <- function(input, output) {
+    
+    output$txtout <- renderText({                # renderTable etc, see docs for options
+      paste( input$txt1, input$txt2, sep = " " )
+    })
+  } # server
+  
+
+  # Create Shiny object
+  shinyApp(ui = ui, server = server)
+
+```
